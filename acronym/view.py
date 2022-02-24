@@ -49,7 +49,6 @@ def search():
     if request.method == 'POST':
         search_item = request.form.get('search').upper()
         search_for = Create.query.filter_by(acronym=search_item)
-        search_for = Create.filter(acronym=search_item)
         for value in search_for:
             if search_item != value.acronym:
                 flash('No result found')
