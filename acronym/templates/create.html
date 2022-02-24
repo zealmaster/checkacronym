@@ -1,0 +1,60 @@
+{% extends  "base.html" %}
+
+{% block title %} Add Acronym {% endblock %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+     {{ message }}
+{% endfor %}
+
+<div class="container bg-light">
+<div>
+<h2>Acronym</h2>
+KI
+</div>
+<div>
+    <h2>Meaning</h2>
+Kingsley Ijuo
+</div>
+
+<div>
+    <h2>Definition</h2>
+The nickname of Kingsley Ijuo Onah
+</div>
+</div>
+<br>
+<div class="container container-sm bg-outline-success shadow p-3 mb-5">
+<form method="post" action="/create" class="form-control form-control-lg">
+     <div class="form-class">
+         <label for="acronym">Acronym</label><br>
+    <input type="text" name="acronym" id="acronym" class="form-control" placeholder="Type acronym. E.g. KI" required>
+    </div>
+    <br>
+    <div>
+         <label for="subject">Subject</label><br>
+        <select id="subject" name="subject" class="dropmenu" class="form-control form-control-sm" required>
+            <option>Engineering</option>
+            <option>Medicine</option>
+            <option>Others</option>
+        </select>
+
+    </div>
+    <br>
+    <div>
+         <label for="meaning">Meaning</label><br>
+        <textarea name="meaning" id="meaning" class="form-control"
+                  placeholder="Type the meaning. E.g. Kingsley Ijuo" required></textarea>
+    </div>
+    <br>
+    <div>
+         <label for="definition">Definition</label><br>
+        <textarea name="definition" id="definition" class=" form-control"
+                  placeholder="Define the acronym. E.g. The nickname of Kingsley Ijuo Onah"></textarea>
+    </div>
+        <br>
+
+    <input type="submit" value="Add" class="form-control btn btn-dark">
+</form>
+</div>
+{% endblock %}

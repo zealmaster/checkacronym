@@ -1,0 +1,25 @@
+{% extends  "base.html" %}
+
+{% block title %} Add Acronym {% endblock %}
+
+{% block content %}
+<h3> {{search.acronym}} in {{search.subject}} </h3>
+<div class="container color-primary shadow p-3 mb-5 rounded">
+<div class="container color-primary shadow p-3 mb-5 rounded">
+<strong>Acronym</strong><br>
+    {{search.acronym}} <br>
+</div>
+<div class="container">
+    <strong>Meaning</strong><br>
+    {{search.meaning}} <br>
+</div><br>
+
+<div class="container">
+    <strong>Definition</strong><br>
+{{search.definition}} <br>
+    <div class="">
+   Author: {{added_by.firstname}} {{added_by.lastname}} {{added_by.date_added}}
+    </div>
+</div>
+</div>
+{% endblock %}

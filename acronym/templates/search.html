@@ -1,0 +1,26 @@
+{% extends  "base.html" %}
+
+{% block title %} Add Acronym {% endblock %}
+
+{% block content %}
+<h2>Search results</h2>
+{% if search != [] %}
+<!--DISPLAY SEARCH RESULT WITH THE LINK TO SHOW EVERYTHING ABOUT THE SEARCHED ACRONYM-->
+{% for value in search %}
+
+<div>
+<!--            <h2>Acronym</h2>-->
+            <a href={{url_for('view.display_acronym', id=value.id)}}> {{value.acronym}} in {{value.subject}}</a><br>
+        By: {{added_by.firstname}} {{added_by.lastname}} {{value.date_added}} <br>
+            <br>
+</div>
+
+ {% endfor %}
+
+{% else %}
+
+Nothing found. Add the acronym <a href="/index">here</a>
+
+{% endif %}
+
+{% endblock %}

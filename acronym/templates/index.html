@@ -1,0 +1,37 @@
+{% extends  "base.html" %}
+{% block title %} Check Acronym - Home {% endblock %}
+
+        <!--show flashed messages-->
+
+
+{%block content%}
+
+<h1>Welcome to CHECKACRONYM.COM</h1>
+
+<form method="post" action="/search">
+<div>
+    <input type="text" name="search" placeholder="Search the acronym" id="search">
+    <input type="submit" value="Search">
+</div>
+</form>
+
+{% for user in search %}
+{{user.firstname}} {{user.lastname}} <br>
+{% endfor %}
+<div>
+<h2>Acronym</h2>
+KI
+</div>
+<div>
+    <h2>Meaning</h2>
+Kingsley Ijuo
+</div>
+
+<div>
+    <h2>Definition</h2>
+The nickname of Kingsley Ijuo Onah
+</div>
+{%endblock%}
+
+</body>
+</html>

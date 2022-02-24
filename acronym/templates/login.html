@@ -1,0 +1,23 @@
+{% extends  "base.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+     {{ message }}
+{% endfor %}
+
+<br>
+<form method="post" class="form-control form-control-lg">
+   <label for="email">Email</label>
+    <input type="text" name="email" placeholder="Enter username" id="email">
+    <br>
+       <br>
+       <label for="password">Email</label>
+    <input type="password" name="password" placeholder="Enter password" id="password">
+       <br>
+    <br>
+    <input type="submit" value="Login"  class="btn btn-dark">
+</form>
+{% endblock %}
