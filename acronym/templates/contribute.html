@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+
+{% block title %} Add contribution {% endblock %}
+
+{% block content %}
+<div class="container-sm align-center">
+    <br>
+<h6 class="container color-primary shadow p-3 mb-5 rounded">Your contribution will be sent to the original author for approval. Enter your addition below.</h6>
+    <form action="#" method="post" class="form-control form-control-sm color-primary shadow p-3 mb-5 rounded">
+        <textarea name="contribution" id="definition" class=" form-control"
+                  placeholder="Add additional definition to this acronym"></textarea>
+        <button type="submit" class="btn-sm btn-dark">Send your contribution</button>
+    </form>
+</div>
+{% endblock %}

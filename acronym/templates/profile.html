@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+
+{% block title %} Profile Page {% endblock %}
+
+{% block content %}
+<div class="container-sm align-center">
+    <h2>
+ Name: {{profile.firstname}} {{profile.lastname}}
+         <br>
+        </h2>
+    Contact <br>
+    {{profile.email}}
+{% if profile.id == user.id %}<br><br>
+    <form action="#" method="post">
+        <input class="btm-sm btn-primary" type="submit" value="Edit Profile">
+    </form>
+    {% endif %}
+
+    {% for subject, acronym_value in collect_acronym.items() %}
+    {% for i in range(acronym_value|length ) %}
+         {% for value in acronym_added %}
+        {% if value.added_by == user.id%}
+    {{subject}}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends  "base.html" %}
+
+{% block title %} {{search.acronym}} in {{search.subject}} {% endblock %}
+
+{% block content %}
+
+<div class="container color-primary shadow p-3 mb-5 rounded">
+    <h3> {{search.acronym}} in {{search.subject}} </h3>
+   Added by: <a href="{{url_for('view.profile', id=added_by.id)}}"> {{added_by.firstname}} {{added_by.lastname}} {{added_by.date_added}}</a><br>
+    {% if search.author_id == user.id%}
+    <a href="#">Edit</a>  <a href="#">Delete</a>
+    {% endif %}
+    <div>
+<!-- The contributors list to the acronym's definition goes here   -->
+    Contributors:
+    {% if contributor_dict != [] %}
+    {% for contributor in contributor_dict %}
+     <a href="{{url_for('view.profile', id=contributor.id)}}"> {{contributor.firstname}} {{contributor.lastname}}</a>
+    {% endfor %}
+    {% else %}
+    {{None}}
+    {% endif %}
+    </div>
+<div class="container color-primary shadow p-3 mb-5 rounded">
+<strong>Acronym</strong><br>
+    {{search.acronym}} <br>
+</div>
+<div class="container">
+    <strong>Meaning</strong><br>
+    {{search.meaning}} <br>
+</div><br>
+
+<div class="container">
+    <strong>Definition</strong><br>
+    <p>{{search.definition}}</p>
+    {%for contributions in read_contribution %}
+    <p>{{contributions.contribution}}</p>
+    {% endfor %}
+    <div class=" link-primary">
+    {% if user.is_authenticated %}
+<a href="{{url_for('view.contribute', id=search.id)}}">Contribute to the definition.</a>
+         {% endif %}
+        </div>
+</div>
+</div>
+{% endblock %}

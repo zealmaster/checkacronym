@@ -1,0 +1,79 @@
+{% extends  "base.html" %}
+
+{% block title %} Add Acronym {% endblock %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+     {{ message }}
+{% endfor %}
+
+<div class="container align-items-center">
+<div>
+<h2>Acronym</h2>
+KI
+</div>
+<div>
+    <h2>Meaning</h2>
+Kingsley Ijuo
+</div>
+
+<div>
+    <h2>Definition</h2>
+The nickname of Kingsley Ijuo Onah
+</div>
+</div>
+<br>
+<div class="container container-sm bg-outline-success shadow p-3 mb-3">
+<form method="post" action="/create" class="form-control form-control-sm">
+     <div class="form-class">
+         <label for="acronym">Acronym</label><br>
+    <input type="text" name="acronym" id="acronym" class="form-control mb-3" placeholder="Type acronym. E.g. KI" required>
+    </div>
+    <br>
+    <div>
+
+
+         <label for="subject">Subject</label><br>
+        <select id="subject" oninput="showField()" style="display: block;" name="subject" class="dropmenu" class="form-control form-control-sm mb-3" required>
+            {% for subject, acronym_value in collect_acronym.items() %}
+            <option>{{subject}}</option>
+            {% endfor %}
+            <option>Others</option>
+        </select> <br><br>
+        <input type="text" id="input-el" style="display: none;" name="others" placeholder="Type the new subject">
+
+    </div>
+<br>
+    <div>
+         <label for="meaning">Meaning</label><br>
+        <textarea name="meaning" id="meaning" class="form-control mb-3"
+                  placeholder="Type the meaning. E.g. Kingsley Ijuo" required></textarea>
+    </div>
+    <br>
+    <div>
+         <label for="definition">Definition</label><br>
+        <textarea name="definition" id="definition" class=" form-control"
+                  placeholder="Define the acronym. E.g. The nickname of Kingsley Ijuo Onah"></textarea>
+    </div>
+        <br>
+
+    <input type="submit" value="Add" class="form-control-sm btn btn-dark mb-3">
+</form>
+</div>
+<script>
+    
+
+function showField(){
+    var subjectEl = document.getElementById('subject')
+    var inputEl = document.getElementById('input-el');
+
+    if (subjectEl.value == "Others"){
+        inputEl.style.display="block";
+    }else{
+        inputEl.style.display="none";
+        inputEl.value = null
+    }
+}
+</script>
+{% endblock %}

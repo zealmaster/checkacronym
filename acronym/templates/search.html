@@ -1,0 +1,39 @@
+{% extends  "base.html" %}
+
+{% block title %} Add Acronym {% endblock %}
+
+{% block content %}
+
+{% if search != [] %}
+<!--DISPLAY SEARCH RESULT WITH THE LINK TO SHOW EVERYTHING ABOUT THE SEARCHED ACRONYM-->
+
+<div class="container">
+    <strong><h2>Search results</h2></strong>
+    </div>
+{% for value in search %}
+
+<div class="container shadow p-3 mb-5 rounded align-items-center">
+<!--            <h2>Acronym</h2>-->
+            <a class="nav-item link-dark" href={{url_for('view.display_acronym', id=value.id)}}> {{value.acronym}} in {{value.subject}}</a><br>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {%if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+            <br>
+</div>
+
+ {% endfor %}
+
+{% else %}
+<div class="container">
+    <strong><h2>Search results</h2></strong>
+    </div>
+Nothing found. Add the acronym <a href={{url_for('view.create')}}>here</a>
+
+{% endif %}
+
+{% endblock %}
